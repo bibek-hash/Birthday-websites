@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday 🎂</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Inter:wght@300;400;600&display=swap">
+<style>
+:root{--bg:#07060d;--ink:#f4f1ff;--muted:#a9a4c4;--a:#ff7ab8;--b:#8b7bff;--c:#4fe0d0;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.14);
+--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.aurora{position:fixed;inset:0;overflow:hidden;z-index:0}
+.aurora i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);opacity:.38;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){background:var(--b);left:-15vmax;top:-20vmax}
+.aurora i:nth-child(2){background:var(--a);right:-20vmax;top:10vmax;animation-delay:-7s}
+.aurora i:nth-child(3){background:var(--c);left:10vmax;bottom:-30vmax;opacity:.25;animation-delay:-13s}
+@keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.15) rotate(25deg)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+canvas{position:fixed;inset:0;z-index:2;pointer-events:none;width:100%;height:100%}
+main{position:relative;z-index:3;height:100%}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:1.5rem 1.5rem 5rem;text-align:center;opacity:0;pointer-events:none;transform:translateY(24px) scale(.98);filter:blur(8px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1),filter .8s}
+.scene.on{opacity:1;pointer-events:auto;transform:none;filter:none}
+.eyebrow{font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;color:var(--muted)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.02em}
+h1{font-size:clamp(2.6rem,10vw,6rem)}
+h2{font-size:clamp(1.8rem,6vw,3rem)}
+.grad{background:linear-gradient(100deg,var(--a),var(--b) 50%,var(--c));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.word{display:inline-block;opacity:0;transform:translateY(.6em);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+p.sub{color:var(--muted);max-width:30rem;line-height:1.6;font-weight:300}
+button{font:600 .95rem var(--sans);color:var(--ink);cursor:pointer;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:.95rem 1.8rem;border-radius:999px;transition:transform .25s,box-shadow .25s,border-color .25s}
+button:hover{transform:translateY(-2px);border-color:var(--a);box-shadow:0 10px 40px -10px var(--a)}
+button:focus-visible,.candle:focus-visible{outline:2px solid var(--c);outline-offset:4px}
+button.primary{background:linear-gradient(110deg,var(--a),var(--b));border-color:transparent}
+.stack{position:relative;width:min(88vw,360px);height:min(52vh,380px);perspective:900px;cursor:pointer}
+.card{position:absolute;inset:0;border-radius:28px;padding:2rem 1.6rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid var(--line);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 30px 80px -30px rgba(0,0,0,.8);transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s;transform-style:preserve-3d}
+.card .n{font-family:var(--serif);font-size:3.2rem;font-style:italic}
+.card p{font-family:var(--serif);font-size:1.35rem;line-height:1.4}
+.hint{font-size:.8rem;color:var(--muted)}
+.cake{width:min(70vw,300px);overflow:visible}
+.candle{cursor:pointer}
+.flame{transform-origin:150px 78px;animation:flick .18s ease-in-out infinite alternate;transition:opacity .4s}
+.out .flame{opacity:0}
+.smoke{opacity:0}
+.out .smoke{animation:smoke 2.2s ease-out forwards}
+@keyframes flick{from{transform:scale(1,1) rotate(-2deg)}to{transform:scale(.92,1.1) rotate(2deg)}}
+@keyframes smoke{0%{opacity:.7;transform:translateY(0)}100%{opacity:0;transform:translateY(-40px)}}
+.letter{max-width:34rem;text-align:left;font-family:var(--serif);font-size:clamp(1.05rem,3.4vw,1.35rem);line-height:1.75;min-height:12rem;white-space:pre-wrap;padding:1.8rem;border-radius:24px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);max-height:62vh;overflow:auto}
+.sig{font-style:italic;color:var(--a);opacity:0;transition:opacity 1s}
+.sig.on{opacity:1}
+nav{position:fixed;z-index:5;left:0;right:0;bottom:calc(1.2rem + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;gap:.6rem}
+nav b{width:8px;height:8px;border-radius:99px;background:var(--line);transition:all .5s}
+nav b.on{width:28px;background:linear-gradient(90deg,var(--a),var(--b))}
+#snd{position:fixed;z-index:5;top:calc(.9rem + env(safe-area-inset-top,0px));right:.9rem;padding:.55rem .9rem;font-size:.8rem}
+.glow{position:fixed;z-index:2;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(139,123,255,.22),transparent 65%);left:50%;top:50%;transition:opacity .4s}
+@media (hover:none){.glow{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.word{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="aurora"><i></i><i></i><i></i></div>
+<div class="grain"></div>
+<div class="glow" id="glow"></div>
+<canvas id="fx"></canvas>
+<button id="snd" aria-pressed="true">♪ Sound on</button>
+
+<main>
+  <section class="scene on" id="s0">
+    <p class="eyebrow">A little something for you</p>
+    <h2 class="grad" id="forName"></h2>
+    <p class="sub">Made with love, just for my favorite person. Headphones optional, blushing required.</p>
+    <button class="primary" data-next>Open it</button>
+  </section>
+
+  <section class="scene" id="s1">
+    <p class="eyebrow">Today is all yours</p>
+    <h1 id="hb"></h1>
+    <p class="sub" id="tag"></p>
+    <button data-next>Continue</button>
+  </section>
+
+  <section class="scene" id="s2">
+    <p class="eyebrow">Why I love you</p>
+    <div class="stack" id="stack" aria-live="polite"></div>
+    <p class="hint">Tap the card for the next one</p>
+  </section>
+
+  <section class="scene" id="s3">
+    <p class="eyebrow">One more thing</p>
+    <h2>Make a wish, then<br><span class="grad">blow out the candle</span></h2>
+    <svg class="cake" viewBox="0 0 300 260" role="img" aria-label="Birthday cake with one candle">
+      <defs>
+        <linearGradient id="t1" x1="0" x2="1"><stop offset="0" stop-color="#ff7ab8"/><stop offset="1" stop-color="#8b7bff"/></linearGradient>
+        <linearGradient id="t2" x1="0" x2="1"><stop offset="0" stop-color="#8b7bff"/><stop offset="1" stop-color="#4fe0d0"/></linearGradient>
+        <radialGradient id="fl"><stop offset="0" stop-color="#fff6c8"/><stop offset=".5" stop-color="#ffb347"/><stop offset="1" stop-color="#ff5e7e"/></radialGradient>
+      </defs>
+      <ellipse cx="150" cy="238" rx="130" ry="14" fill="rgba(255,255,255,.1)"/>
+      <rect x="55" y="165" width="190" height="70" rx="16" fill="url(#t2)"/>
+      <rect x="85" y="115" width="130" height="58" rx="14" fill="url(#t1)"/>
+      <path d="M85 135q16 14 32 0t32 0 32 0 34 0" stroke="#fff" stroke-opacity=".7" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M55 190q24 16 48 0t48 0 48 0 46 0" stroke="#fff" stroke-opacity=".6" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <g class="candle" id="candle" tabindex="0" role="button" aria-label="Blow out the candle">
+        <rect x="140" y="82" width="20" height="36" rx="5" fill="#f4f1ff"/>
+        <rect x="140" y="92" width="20" height="6" fill="#ff7ab8" opacity=".8"/>
+        <rect x="120" y="30" width="60" height="90" fill="transparent"/>
+        <ellipse class="flame" cx="150" cy="62" rx="9" ry="17" fill="url(#fl)"/>
+        <path class="smoke" d="M150 70q-8-12 0-22t0-22" stroke="#cfc9ee" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <p class="hint" id="wishHint">Tap the flame</p>
+    <button class="primary" data-next id="wishNext" style="display:none">Read my letter</button>
+  </section>
+
+  <section class="scene" id="s4">
+    <p class="eyebrow">From me to you</p>
+    <div class="letter" id="letter" aria-live="polite"></div>
+    <p class="sig" id="sig"></p>
+    <button id="again" style="display:none">Replay ↺</button>
+  </section>
+</main>
+<nav id="dots"></nav>
+
+<script>
+// ✏️ EDIT ME: personalize everything here
+const CFG = {
+  name: "My Love",
+  from: "Forever yours",
+  tagline: "Another year of you, and I’m still falling a little more every single day.",
+  reasons: [
+    "Your smile is my favorite thing in the world, and it fixes my worst days in seconds.",
+    "You’re the softest, kindest heart I know, and you make everyone around you feel safe.",
+    "Even the most ordinary moments become my favorite memories when I’m with you.",
+    "The way you care, even about the tiny things, is something I notice and adore every time.",
+    "You make me want to be a better person, and you make home feel like a person, not a place."
+  ],
+  letter: "My dearest {name},\n\nOn your birthday I wanted to give you something that couldn’t be wrapped. So here are my words instead.\n\nThank you for being my person. For the late-night talks, the silly inside jokes, the way you hold my hand like it’s the most natural thing in the world.\n\nI hope this year gives you everything your heart quietly wishes for, and I hope I get to be there for every moment of it. You deserve all the love there is.\n\nHappy birthday, my love. I’m so lucky it’s you."
+};
+
+const $ = (s, r = document) => r.querySelector(s);
+const scenes = [...document.querySelectorAll(".scene")];
+let cur = 0, typing = null;
+
+// ---------- Audio (tiny chime synth) ----------
+let ac = null, soundOn = true;
+function chime(notes = [523, 659, 784], gap = 0.12) {
+  if (!soundOn) return;
+  try {
+    ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+    notes.forEach((f, i) => {
+      const o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime + i * gap;
+      o.type = "sine"; o.frequency.value = f;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.12, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 1.2);
+      o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + 1.3);
+    });
+  } catch (e) {}
+}
+$("#snd").onclick = e => {
+  soundOn = !soundOn;
+  e.target.setAttribute("aria-pressed", soundOn);
+  e.target.textContent = soundOn ? "♪ Sound on" : "♪ Sound off";
+};
+
+// ---------- Scenes ----------
+const dots = $("#dots");
+scenes.forEach(() => dots.appendChild(document.createElement("b")));
+function words(el, text, delay = 0.12) {
+  el.innerHTML = "";
+  text.split(" ").forEach((w, i) => {
+    const s = document.createElement("span");
+    s.className = "word"; s.textContent = w + "\u00A0";
+    s.style.animationDelay = (i * delay) + "s";
+    el.appendChild(s);
+  });
+}
+function go(n) {
+  if (n >= scenes.length) return;
+  clearTimeout(typing);
+  scenes[cur].classList.remove("on");
+  cur = n;
+  scenes[cur].classList.add("on");
+  [...dots.children].forEach((d, i) => d.classList.toggle("on", i === cur));
+  chime(cur === 4 ? [392, 523, 659, 784] : [523, 659]);
+  if (cur === 1) { words($("#hb"), "Happy Birthday,", .18); const h = $("#hb"); const s = document.createElement("span"); s.className = "word grad"; s.style.animationDelay = ".6s"; s.textContent = CFG.name + "!"; h.appendChild(document.createElement("br")); h.appendChild(s); burst(innerWidth / 2, innerHeight * .35, 60); }
+  if (cur === 2) buildCards();
+  if (cur === 4) writeLetter();
+}
+document.querySelectorAll("[data-next]").forEach(b => b.addEventListener("click", () => go(cur + 1)));
+
+// ---------- Intro + hello ----------
+$("#forName").textContent = "For " + CFG.name;
+$("#tag").textContent = CFG.tagline;
+[...dots.children][0].classList.add("on");
+
+// ---------- Reasons cards ----------
+let ci = 0;
+function buildCards() {
+  const st = $("#stack"); st.innerHTML = ""; ci = 0;
+  CFG.reasons.forEach((r, i) => {
+    const c = document.createElement("div");
+    c.className = "card";
+    c.innerHTML = '<span class="n grad">' + String(i + 1).padStart(2, "0") + "</span><p></p>";
+    c.querySelector("p").textContent = r;
+    st.appendChild(c);
+  });
+  layout();
+}
+function layout() {
+  [...$("#stack").children].forEach((c, i) => {
+    const d = i - ci;
+    if (d < 0) { c.style.transform = "translateX(-120%) rotate(-12deg)"; c.style.opacity = 0; }
+    else { c.style.transform = `translateY(${d * 14}px) translateZ(${-d * 40}px) scale(${1 - d * .05})`; c.style.opacity = d > 3 ? 0 : 1 - d * .25; }
+    c.style.zIndex = 99 - i;
+  });
+}
+$("#stack").addEventListener("click", () => {
+  if (cur !== 2) return;
+  ci++; chime([660 + ci * 60]);
+  if (ci >= CFG.reasons.length) { burst(innerWidth / 2, innerHeight / 2, 40); setTimeout(() => go(3), 500); }
+  else layout();
+});
+$("#stack").addEventListener("pointermove", e => {
+  const top = $("#stack").children[ci]; if (!top) return;
+  const r = top.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+  top.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
+});
+$("#stack").addEventListener("pointerleave", layout);
+
+// ---------- Wish ----------
+function blow() {
+  const s = $("#s3"); if (s.classList.contains("out")) return;
+  s.classList.add("out");
+  $("#wishHint").textContent = "Your wish is on its way ✨";
+  chime([784, 988, 1175, 1568], .1);
+  const r = $("#candle").getBoundingClientRect();
+  burst(r.left + r.width / 2, r.top, 140);
+  setTimeout(() => burst(innerWidth * .2, innerHeight * .7, 70), 300);
+  setTimeout(() => burst(innerWidth * .8, innerHeight * .7, 70), 500);
+  $("#wishNext").style.display = "";
+}
+$("#candle").addEventListener("click", blow);
+$("#candle").addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") blow(); });
+
+// ---------- Letter ----------
+function writeLetter() {
+  const el = $("#letter"), sig = $("#sig"), txt = CFG.letter.replace("{name}", CFG.name);
+  el.textContent = ""; sig.classList.remove("on"); sig.textContent = "— " + CFG.from + " ♥"; $("#again").style.display = "none";
+  let i = 0;
+  const step = () => {
+    if (i >= txt.length) { sig.classList.add("on"); $("#again").style.display = ""; burst(innerWidth / 2, innerHeight * .8, 90); return; }
+    el.textContent += txt[i++]; el.scrollTop = el.scrollHeight;
+    typing = setTimeout(step, ".,!\n".includes(txt[i - 1]) ? 220 : 32);
+  };
+  step();
+  el.onclick = () => { clearTimeout(typing); el.textContent = txt; i = txt.length; step(); };
+}
+$("#again").onclick = () => { $("#s3").classList.remove("out"); $("#wishNext").style.display = "none"; $("#wishHint").textContent = "Tap the flame"; go(0); };
+
+// ---------- Particles ----------
+const cv = $("#fx"), cx = cv.getContext("2d");
+let P = [], W, H, dpr = Math.min(devicePixelRatio || 1, 2);
+const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+function size() { W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+addEventListener("resize", size); size();
+const COLORS = ["#ff7ab8", "#8b7bff", "#4fe0d0", "#ffd36e", "#ffffff"];
+function burst(x, y, n) {
+  if (reduce) n = Math.min(n, 12);
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * Math.PI * 2, v = 3 + Math.random() * 8;
+    P.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 4, g: .14, life: 1, d: .006 + Math.random() * .008, s: 4 + Math.random() * 6, c: COLORS[i % COLORS.length], r: Math.random() * 6, vr: (Math.random() - .5) * .3, heart: Math.random() < .25 });
+  }
+}
+function heart(x, y, s) {
+  cx.beginPath(); cx.moveTo(x, y + s / 4);
+  cx.bezierCurveTo(x, y - s / 3, x - s, y - s / 3, x - s, y + s / 4);
+  cx.bezierCurveTo(x - s, y + s * .8, x, y + s * 1.1, x, y + s * 1.3);
+  cx.bezierCurveTo(x, y + s * 1.1, x + s, y + s * .8, x + s, y + s / 4);
+  cx.bezierCurveTo(x + s, y - s / 3, x, y - s / 3, x, y + s / 4); cx.fill();
+}
+let amb = 0;
+function tick() {
+  cx.clearRect(0, 0, W, H);
+  if (!reduce && ++amb % 14 === 0 && P.length < 260) P.push({ x: Math.random() * W, y: H + 10, vx: (Math.random() - .5) * .6, vy: -.6 - Math.random() * 1.2, g: 0, life: 1, d: .0025, s: 3 + Math.random() * 5, c: COLORS[(Math.random() * 3) | 0], r: 0, vr: 0, heart: true, soft: true });
+  P = P.filter(p => p.life > 0 && p.y < H + 40);
+  for (const p of P) {
+    p.vy += p.g; p.x += p.vx; p.y += p.vy; p.vx *= .99; p.r += p.vr; p.life -= p.d;
+    cx.globalAlpha = Math.max(0, p.soft ? Math.min(p.life, .4) : p.life); cx.fillStyle = p.c;
+    if (p.heart) heart(p.x, p.y, p.s * .7);
+    else { cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); cx.restore(); }
+  }
+  cx.globalAlpha = 1; requestAnimationFrame(tick);
+}
+tick();
+
+// ---------- Cursor glow + tap sparkles ----------
+const glow = $("#glow");
+addEventListener("pointermove", e => { glow.style.transform = `translate(${e.clientX - innerWidth / 2}px,${e.clientY - innerHeight / 2}px)`; });
+addEventListener("pointerdown", e => { if (!e.target.closest("button,.stack,.candle")) burst(e.clientX, e.clientY, 10); });
+</script>
+</body>
+</html>
